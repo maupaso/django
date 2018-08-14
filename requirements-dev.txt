@@ -3,8 +3,6 @@ dj-database-url==0.5.0
 dj-static==0.0.6
 Django==2.1
 jsonschema==2.6.0
-nbconvert==5.3.1
-nbformat==4.4.0
 Pillow==5.0.0
 python-dateutil==2.6.1
 python-decouple==3.1
