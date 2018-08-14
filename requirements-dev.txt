@@ -34,11 +34,6 @@ Pygments==2.2.0
 pytesseract==0.2.0
 python-dateutil==2.6.1
 python-decouple==3.1
-pytz==2017.3
-pywinpty==0.5.1
-pyzmq==16.0.3
-qtconsole==4.3.1
-Send2Trash==1.4.2
 simplegeneric==0.8.1
 six==1.11.0
 static3==0.7.0
