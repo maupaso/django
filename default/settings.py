@@ -27,7 +27,11 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['django-default.herokuapp.com']
+
+ALLOWED_HOSTS = [
+    'django-default.mybluemix.net',
+    'django-default.herokuapp.com',
+]
 
 
 # Application definition
