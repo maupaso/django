@@ -4,9 +4,9 @@ from django.template import loader
 
 # Create your views here.
 def index(request):
-	    template = loader.get_template('carioquinha/index.html')
-	    context = {
-	    	'ola': "OI"
-	    }
+    template = loader.get_template('carioquinha/index.html')
+    context = {
+    	'ola': "OI"
+    }
 
-	    return render(request, 'carioquinha/index.html')
+    return render(request, 'carioquinha/index.html')
