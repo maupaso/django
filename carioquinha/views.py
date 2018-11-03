@@ -26,15 +26,19 @@ def twitterRequest(keywords):
 		print(e)
 
 def getTransitoTwittes():
-	col = list(filter(lambda t: t.find("TWITTER ALERT") == -1, twitterRequest('@OperacoesRio').split("\n")))
-	col = filter(lambda t: t.find("#PrimaveraCOR2018") == -1, col)
-	col = filter(lambda t: t.find("FUTEBOL") == -1, col)
-	col = filter(lambda t: t.find("CHAT COR") == -1, col)
-	col = filter(lambda t: t.find("PRÓXIMOS DIAS") == -1, col)
-	col = filter(lambda t: t.find("SMS") == -1, col)
-	col = filter(lambda t: t.find("#RDRJ") == -1, col)   
-	col = filter(lambda t: t.find("|") != -1, col)
-	col = list(filter(lambda t: len(t) > 120, col))
+	try:
+		col = list(filter(lambda t: t.find("TWITTER ALERT") == -1, twitterRequest('@OperacoesRio').split("\n")))
+		col = filter(lambda t: t.find("#PrimaveraCOR2018") == -1, col)
+		col = filter(lambda t: t.find("FUTEBOL") == -1, col)
+		col = filter(lambda t: t.find("CHAT COR") == -1, col)
+		col = filter(lambda t: t.find("PRÓXIMOS DIAS") == -1, col)
+		col = filter(lambda t: t.find("SMS") == -1, col)
+		col = filter(lambda t: t.find("#RDRJ") == -1, col)   
+		col = filter(lambda t: t.find("|") != -1, col)
+		col = list(filter(lambda t: len(t) > 120, col))
+	except Exception as e:
+		return None
+
 	return col
 
 def getViolenciaTwittes():
@@ -56,7 +60,11 @@ def getViolenciaTwittes():
 	return col
 
 def getEventosTwittes():
-	col = list(filter(lambda t: len(t) > 120, twitterRequest('@Cultura_Rio').split("\n")))
+	try:
+		col = list(filter(lambda t: len(t) > 120, twitterRequest('@Cultura_Rio').split("\n")))
+	except Exception as e:
+		return None
+		
 	return col
 
 
