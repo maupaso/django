@@ -13,7 +13,15 @@
 </head>
 <body onLoad="getLocation()">
 
+    <p id="humidity"></p>
+    <p id="rain"></p>
+    <p id="wind"></p>
+    <p id="uv"></p>
+    <p id="thermalSensation"></p>
+    <p id="textIcon"></p>
+    <p id="temperature"></p>
     <p id="demo"></p>
+
 
     <script src="{% static 'carioquinha/bootstrap/js/bootstrap.js' %}"></script>
     <script src="{% static 'carioquinha/js/jquery.js' %}"></script>
@@ -24,6 +32,12 @@
     <script type="text/javascript">
       
         var x = document.getElementById("demo");
+
+        var city = "";
+        var state = "";
+        var country = "";
+        var id = "";
+
 
         function getLocation() {
             if (navigator.geolocation) {
@@ -63,50 +77,37 @@
           xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
 
-                var city = "";
-                var state = "";
-                var country = "";
+                city = "";
+                state = "";
+                country = "";
 
                 var json = JSON.parse(this.responseText);
-
-                //console.log(json["results"].length);
                 var resultLength = json["results"].length;
 
                 for(var i = 0; i < resultLength; i++){
                     var addressComponentLength = json["results"][i]["address_components"].length;
-                    //console.log(addressComponentLength);
 
                     for(var j = 0; j < addressComponentLength; j++){
                         var typesLength = json["results"][i]["address_components"][j]["types"].length;
-                        //console.log(typesLength);
 
                         for (var x = 0; x < typesLength; x++){
                             if(json["results"][i]["address_components"][j]["types"][x] == "locality" && city == ""){
                                 city = json["results"][i]["address_components"][j]["short_name"];
-                                //console.log("CITY_FOR: " + city);
                             }
                             if(json["results"][i]["address_components"][j]["types"][x] == "administrative_area_level_1" && state == ""){
                                 state = json["results"][i]["address_components"][j]["short_name"];
-                                //console.log("STATE_FOR: " + state);
                             }
                             if(json["results"][i]["address_components"][j]["types"][x] == "country" && country == ""){
                                 country = json["results"][i]["address_components"][j]["short_name"];
-                                //console.log("COUNTRY_FOR: " + country);
                             }
                         }
                     }
                 }             
 
-                console.log("CITY: " + city);
-                console.log("STATE: " + state);
-                console.log("COUNTRY: " + country);
-
-             document.getElementById("demo").innerHTML = this.responseText;
+                getPlaceId(city, state);
             }
           };
 
-          lat = "-22.5060226";
-          lng = "-43.1792914";
 
           var prefix = "https://maps.googleapis.com/maps/api/geocode/json?latlng=";
           var sufix  = "&key=AIzaSyCAN8HtOi-Om0uHY5QYRz1T73yOw8TrOAk";
@@ -114,6 +115,87 @@
           xhttp.open("GET", (prefix + "" + lat + "," + lng + "" + sufix), true);
           xhttp.send();
         }
+
+
+        function getPlaceId(city, state){
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+
+                var json = JSON.parse(this.responseText);
+
+                id = json[0]["id"];
+
+                console.log(id);
+
+                getWeather(id);
+            }
+          };
+
+
+          var prefix = "http://apiadvisor.climatempo.com.br/api/v1/locale/city?name=";
+          var sufix  = "&token=69ea8f47c3656a72c8cfa63cefe3ebb1";
+
+          var url = prefix + "" + city + "&state=" + state + "" + sufix;
+
+          xhttp.open("GET", url, true);
+          //xhttp.withCredentials = true;
+          //xhttp.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
+          //xhttp.setRequestHeader("Access-Control-Allow-Origin", "oi");
+          //xhttp.open("GET", "https://cors-escape.herokuapp.com/"+url);
+          //xhttp.setRequestHeader("Accept", 'application/json');
+          xhttp.send();
+        }
+
+        function getWeather(id){
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+
+                var json = JSON.parse(this.responseText);
+
+                var dataLength = json["data"].length;
+
+                for(var i = 0; i < dataLength; i++){
+                    var data = json["data"][i]
+                    var date = data.date_br;
+
+                    var humidity = json["data"][i]["humidity"];
+                    var rain = json["data"][i]["rain"];
+                    var wind = json["data"][i]["wind"];
+                    var uv = json["data"][i]["uv"];
+                    var thermalSensation = json["data"][i]["thermal_sensation"];
+                    var textIcon = json["data"][i]["text_icon"];
+                    var temperature = json["data"][i]["temperature"];
+
+                    document.getElementById("humidity").innerHTML = humidity;
+                    document.getElementById("rain").innerHTML = rain;
+                    document.getElementById("wind").innerHTML = wind;
+                    document.getElementById("uv").innerHTML = uv;
+                    document.getElementById("thermalSensation").innerHTML = thermalSensation;
+                    document.getElementById("textIcon").innerHTML = textIcon;
+                    document.getElementById("temperature").innerHTML = temperature;
+
+
+
+                }     
+            }
+          };
+
+          var prefix = "http://apiadvisor.climatempo.com.br/api/v1/weather/locale/";
+          var sufix  = "/days/15?token=69ea8f47c3656a72c8cfa63cefe3ebb1";
+
+          var url = prefix + "" + id + "" + sufix
+
+          xhttp.open("GET", url, true);
+          //xhttp.withCredentials = true;
+          //xhttp.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
+          //xhttp.setRequestHeader("Access-Control-Allow-Origin", "oi");
+          //xhttp.open("GET", "https://cors-escape.herokuapp.com/"+url);
+          //xhttp.setRequestHeader("Accept", 'application/json');
+          xhttp.send();
+        }
+
 
     </script>
 
