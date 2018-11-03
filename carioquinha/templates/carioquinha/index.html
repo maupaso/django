@@ -260,19 +260,19 @@
 
                     $(".day > .icon").html(textIcon["icon"]["day"]);
                     $(".day > .text").html(textIcon["text"]["phrase"]["reduced"]);
-                    $(".day > .temperature").html(temperature["max"] / temperature["min"]);
+                    $(".day > .temperature").html(temperature["max"] + "/" + temperature["min"]);
 
                     $(".morning > .icon").html(textIcon["icon"]["day"]);
                     $(".morning > .text").html(textIcon["text"]["phrase"]["reduced"]);
-                    $(".morning > .temperature").html(temperature["max"] / temperature["min"]);
+                    $(".morning > .temperature").html(temperature["morning"]["max"] + "/" + temperature["morning"]["min"]);
 
                     $(".afternoon > .icon").html(textIcon["icon"]["day"]);
                     $(".afternoon > .text").html(textIcon["text"]["phrase"]["reduced"]);
-                    $(".afternoon > .temperature").html(temperature["max"] / temperature["min"]);
+                    $(".afternoon > .temperature").html(temperature["afternoon"]["max"] + "/" + temperature["afternoon"]["min"]);
 
                     $(".night > .icon").html(textIcon["icon"]["day"]);
                     $(".night > .text").html(textIcon["text"]["phrase"]["reduced"]);
-                    $(".night > .temperature").html(temperature["max"] / temperature["min"]);
+                    $(".night > .temperature").html(temperature["night"]["max"] + "/" + temperature["night"]["min"]);
 
 
 
