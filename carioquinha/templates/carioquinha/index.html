@@ -74,34 +74,26 @@
 </nav>
 </div>
 
-<div>
-  <div class="half" style="float: left; text-align: left;padding: 10vw; ">
-    
-    <!--Clima: <input type="checkbox" id="myCheck" onclick="myFunction()">-->
-    Clima: <input type="checkbox" id="buttonClima" onclick="myFunction()">
-      
-  </div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-4">
+      <div class="row">
+        <div class="col-6 button btn" id="transito">
+          <p class="rounded-circle bg-info text-white vcenter" style="height: 100px; width: 100px;">transito</p>
+        </div>
+        <div class="col-6 button btn" id="clima">
+          <p class="rounded-circle bg-info text-white vcenter"  style="height: 100px; width: 100px;">clima</p>
+        </div>
+        <div class="col-6 button btn" id="seguranca">
+          <p class="rounded-circle bg-info text-white vcenter"  style="height: 100px; width: 100px;">seguranca</p>
+        </div>
+        <div class="col-6 button btn" id="other">
+          <p class="rounded-circle bg-info text-white vcenter" style="height: 100px; width: 100px;">transito</p>
+        </div>
+      </div>
+    </div>
 
-  <div class="half" style="float: right; text-align: left;padding: 10vw; border: 1px">
-
-
-<script type="text/javascript">
-      function myFunction() {
-        // Get the checkbox
-        var checkBox = document.getElementById("buttonClima");
-        // Get the output text
-        var text = document.getElementById("text");
-
-        // If the checkbox is checked, display the output text
-        if (checkBox.checked == true){
-          text.style.display = "block";
-        } else {
-          text.style.display = "none";
-        }
-      }
-</script>
-
-    <div class="weather" id="text" style="display: none" align="left">
+    <div id="content" class="col-8 weather" style="display: none">
       <div class="day">
           <p class="icon">["text_icon"]["icon"]["day"]</p>
           <p class="text">["text_icon"]["text"]["phrase"]["reduced"]</p>
@@ -127,6 +119,22 @@
       </div>
     </div>
 
+  </div>      
+
+<script type="text/javascript">
+      function myFunction(param) {
+        var text = document.getElementById("content");
+
+        if (text.style.display == "block"){
+          text.style.display = "none";
+        } else {
+          text.style.display = "block";
+        }
+      }
+</script>
+
+
+
     <div class="span">
       put more things here
     </div>
@@ -140,6 +148,25 @@
     <script src="{% static 'carioquinha/js/jquery.js' %}"></script>
     <script src="{% static 'carioquinha/bootstrap/js/bootstrap.js' %}"></script>
     <script type="text/javascript">
+
+$(document).ready(function() {
+    $("#transito").click(function(){
+      myFunction("transito");
+    });
+
+    $("#clima").click(function(){
+      myFunction("clima");
+    });
+
+    $("#seguranca").click(function(){
+      myFunction("seguranca");
+    });
+
+    $("#other").click(function(){
+      myFunction("other");
+    });
+  });
+
       
         var x = document.getElementById("demo");
 
