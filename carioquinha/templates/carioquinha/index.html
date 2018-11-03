@@ -65,7 +65,7 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-4">
+    <div class="col-5">
       <div class="row">
         <div class="col-6 " id="transito">
           <div class="row justify-content-md-center">
@@ -88,17 +88,17 @@
             </div>
           </div>
         </div>
-        <div class="col-6 " id="other">
+        <div class="col-6 " id="noticia">
           <div class="row justify-content-md-center">
             <div class="col-8">
-              <p class="rounded-circle bg-info text-white vcenter button btn" style="height: 100px; width: 100px;">transito</p>
+              <p class="rounded-circle bg-info text-white vcenter button btn" style="height: 100px; width: 100px;">noticia</p>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div id="content" class="col-8 weather">
+    <div id="content" class="col-7 weather" style="overflow-y: scroll; height:80%;">
 
       <!-- Transito INFO -->
       <div class="row group" id="traffic" style="display: none">
@@ -207,9 +207,13 @@
             $(".group").css("display", "none");
             $("#weather").css("display", "block");
             break;
-          case "seguranca":
+          case "violence":
             $(".group").css("display", "none");
             $("#violence").css("display", "block");
+            break;
+          case "news":
+            $(".group").css("display", "none");
+            $("#news").css("display", "block");
             break;
           default:
             text.innerHTML = "";
@@ -227,11 +231,11 @@
           });
 
           $("#seguranca").click(function(){
-            myFunction("seguranca");
+            myFunction("violence");
           });
 
-          $("#other").click(function(){
-            myFunction("other");
+          $("#noticia").click(function(){
+            myFunction("news");
           });
         });
 
