@@ -31,12 +31,14 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 ALLOWED_HOSTS = [
     'django-default.mybluemix.net',
     'django-default.herokuapp.com',
+    'localhost',
 ]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'carioquinha.apps.CarioquinhaConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
