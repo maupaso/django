@@ -8,47 +8,116 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+
+  <link rel="icon" href="{%static 'carioquinha/images/favicon.ico' %}">
+  <!--<link rel="icon" href="../../../images/favicon.ico">-->
+  <style type="text/css">
+    .div.half {
+        width: 50%;
+    }
+    .div.full {
+      width: 100%;
+    }
+  </style>
+
+
   <title>Carioquinhas</title>
-  <link href="{% static 'carioquinha/bootstrap/css/bootstrap.css' %}" rel="stylesheet">
+
+ <link href="{% static 'carioquinha/bootstrap/css/bootstrap.css' %}" rel="stylesheet">
 </head>
+
 <body onLoad="getLocation()">
 
 
+<div>
 
-<div class="day">
-    <p class="icon">["text_icon"]["icon"]["day"]</p>
-    <p class="text">["text_icon"]["text"]["phrase"]["reduced"]</p>
-    <p class="temperature">["temperature"]["max"] / ["temperature"]["min"]</p>
+  <nav class="navbar navbar-dark bg-dark">
+  <!-- Navbar content -->
+  <a class="navbar-brand" href="#">
+    <img max height="60 px" src="../static/carioquinha/images/LOGO-CARIOQUINHAS-WHITE.png"/></a>
+</nav>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <!--<a class="navbar-brand" href="#">Home</a>-->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Quem somos</a>
+      </li>
+      <!--<li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>-->
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
 </div>
 
-<div class="morning">
-    <p class="icon">["text_icon"]["icon"]["morning"]</p>
-    <p class="text">["text_icon"]["text"]["phrase"]["morning"]</p>
-    <p class="temperature">["temperature"]["morning"]["max"] / ["temperature"]["min"]</p>
+<div>
+  <div class="half" style="float: left; text-align: left;padding: 10vw; ">
+    test-left
+  </div>
+
+  <div class="half" style="float: right; text-align: right;padding: 10vw; border: 1px">
+    <div class="weather" align="left">
+      <div class="day">
+          <p class="icon">["text_icon"]["icon"]["day"]</p>
+          <p class="text">["text_icon"]["text"]["phrase"]["reduced"]</p>
+          <p class="temperature">["temperature"]["max"] / ["temperature"]["min"]</p>
+      </div>
+
+      <div class="morning">
+          <p class="icon">["text_icon"]["icon"]["morning"]</p>
+          <p class="text">["text_icon"]["text"]["phrase"]["morning"]</p>
+          <p class="temperature">["temperature"]["morning"]["max"] / ["temperature"]["min"]</p>
+      </div>
+
+      <div class="afternoon">
+          <p class="icon">["text_icon"]["icon"]["afternoon"]</p>
+          <p class="text">["text_icon"]["text"]["phrase"]["afternoon"]</p>
+          <p class="temperature">["temperature"]["morning"]["max"] / ["afternoon"]["min"]</p>
+      </div>
+
+      <div class="night">
+          <p class="icon">["text_icon"]["icon"]["night"]</p>
+          <p class="text">["text_icon"]["text"]["phrase"]["night"]</p>
+          <p class="temperature">["temperature"]["night"]["max"] / ["temperature"]["min"]</p>
+      </div>
+    </div>
+
+    <div class="span">
+      put more things here
+    </div>
+  </div>
 </div>
+<br/>
+<br/>
+<br/>
+<div class="full">
 
-<div class="afternoon">
-    <p class="icon">["text_icon"]["icon"]["afternoon"]</p>
-    <p class="text">["text_icon"]["text"]["phrase"]["afternoon"]</p>
-    <p class="temperature">["temperature"]["morning"]["max"] / ["afternoon"]["min"]</p>
-</div>
-
-<div class="night">
-    <p class="icon">["text_icon"]["icon"]["night"]</p>
-    <p class="text">["text_icon"]["text"]["phrase"]["night"]</p>
-    <p class="temperature">["temperature"]["night"]["max"] / ["temperature"]["min"]</p>
-</div>
-
-
-
-
-
-    <script src="{% static 'carioquinha/bootstrap/js/bootstrap.js' %}"></script>
     <script src="{% static 'carioquinha/js/jquery.js' %}"></script>
-
-
-
-
+    <script src="{% static 'carioquinha/bootstrap/js/bootstrap.js' %}"></script>
     <script type="text/javascript">
       
         var x = document.getElementById("demo");
@@ -223,6 +292,6 @@
 
 
     </script>
-
+</div>
 </body>
 </html>
