@@ -110,10 +110,14 @@
             </tr>
           </thead>
           <tbody>
+            <tr>
+              <th scope="row">0</th>
+              <td class="textToRead">Hello World</td>
+            </tr>
             {% for news in transitoTwitter %}
               <tr>
                 <th scope="row">{{forloop.counter}}</th>
-                <td>{{news}}</td>
+                <td class="textToRead">{{news}}</td>
               </tr>
             {% endfor %}
           </tbody>
@@ -130,10 +134,14 @@
             </tr>
           </thead>
           <tbody>
+            <tr>
+              <th scope="row">0</th>
+              <td class="textToRead">Hello World</td>
+            </tr>
             {% for news in violenciaTwitter %}
               <tr>
                 <th scope="row">{{forloop.counter}}</th>
-                <td>{{news}}</td>
+                <td class="textToRead">{{news}}</td>
               </tr>
             {% endfor %}
           </tbody>
@@ -150,10 +158,14 @@
             </tr>
           </thead>
           <tbody>
+            <tr>
+              <th scope="row">0</th>
+              <td class="textToRead">Hello World</td>
+            </tr>
             {% for news in eventoTwitter %}
               <tr>
                 <th scope="row">{{forloop.counter}}</th>
-                <td>{{news}}</td>
+                <td class="textToRead">{{news}}</td>
               </tr>
             {% endfor %}
           </tbody>
@@ -237,6 +249,31 @@
           $("#noticia").click(function(){
             myFunction("news");
           });
+
+          $(".textToRead").click(function(){
+            alert(this.valueOf().innerText);
+
+
+            //TEXT TO SPEECH
+            $.ajax({
+              url: "https://stream.watsonplatform.net/text-to-speech/api",
+              type: 'POST',
+              dataType: 'json',
+              contentType: 'application/json',
+              processData: false,
+              Accept: "audio/wav",
+              apikey:"pJRjeQOr033WBJG_5uL1FwFXKpZM0ZX_HgCeqYNh11GR",
+              data: {"text":this.valueOf().innerText},
+              success: function (data) {
+                alert(JSON.stringify(data));
+              },
+              error: function(){
+                alert("Cannot get data");
+              }
+            });
+
+          });
+
         });
 
       
@@ -408,7 +445,7 @@
           //xhttp.open("GET", url, true);
           //xhttp.setRequestHeader("Access-Control-Allow-Origin", "oi");
           //xhttp.send();
-        }
+        }       
 
 
     </script>
