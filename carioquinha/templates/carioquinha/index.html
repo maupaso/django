@@ -51,17 +51,6 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Quem somos</a>
       </li>
-      <!--<li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>-->
       <li class="nav-item">
         <a class="nav-link disabled" href="#">Disabled</a>
       </li>
@@ -75,20 +64,95 @@
 </div>
 
 <div class="container-fluid">
+
+<div class="row" id="traffic" style="display: none">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Notícia</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for news in transitoTwitter %}
+        <tr>
+          <th scope="row">{{forloop.counter}}</th>
+          <td>{{news}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="row" id="violence" style="display: none">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Notícia</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for news in violenciaTwitter %}
+        <tr>
+          <th scope="row">{{forloop.counter}}</th>
+          <td>{{news}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="row" id="news" style="display: none">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Notícia</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for news in eventoTwitter %}
+        <tr>
+          <th scope="row">{{forloop.counter}}</th>
+          <td>{{news}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+
   <div class="row">
     <div class="col-4">
       <div class="row">
-        <div class="col-6 button btn" id="transito">
-          <p class="rounded-circle bg-info text-white vcenter" style="height: 100px; width: 100px;">transito</p>
+        <div class="col-6 " id="transito">
+          <div class="row justify-content-md-center">
+            <div class="col-8">
+              <p class="rounded-circle bg-info text-white vcenter button btn" style="height: 100px; width: 100px;">trânsito</p>
+            </div>
+          </div>
         </div>
-        <div class="col-6 button btn" id="clima">
-          <p class="rounded-circle bg-info text-white vcenter"  style="height: 100px; width: 100px;">clima</p>
+        <div class="col-6" id="clima">
+          <div class="row justify-content-md-center">
+            <div class="col-8">
+              <p class="rounded-circle bg-info text-white vcenter  button btn"  style="height: 100px; width: 100px;">clima</p>
+            </div>
+          </div>
         </div>
-        <div class="col-6 button btn" id="seguranca">
-          <p class="rounded-circle bg-info text-white vcenter"  style="height: 100px; width: 100px;">seguranca</p>
+        <div class="col-6 " id="seguranca">
+          <div class="row justify-content-md-center">
+            <div class="col-8">
+              <p class="rounded-circle bg-info text-white vcenter button btn"  style="height: 100px; width: 100px;">seguranca</p>
+            </div>
+          </div>
         </div>
-        <div class="col-6 button btn" id="other">
-          <p class="rounded-circle bg-info text-white vcenter" style="height: 100px; width: 100px;">transito</p>
+        <div class="col-6 " id="other">
+          <div class="row justify-content-md-center">
+            <div class="col-8">
+              <p class="rounded-circle bg-info text-white vcenter button btn" style="height: 100px; width: 100px;">transito</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -121,7 +185,12 @@
 
   </div>      
 
-<script type="text/javascript">
+</div>
+
+    <script src="{% static 'carioquinha/js/jquery.js' %}"></script>
+    <script src="{% static 'carioquinha/bootstrap/js/bootstrap.js' %}"></script>
+    <script type="text/javascript">
+
       function myFunction(param) {
         var text = document.getElementById("content");
 
@@ -131,41 +200,24 @@
           text.style.display = "block";
         }
       }
-</script>
 
+      $(document).ready(function() {
+          $("#transito").click(function(){
+            myFunction("transito");
+          });
 
+          $("#clima").click(function(){
+            myFunction("clima");
+          });
 
-    <div class="span">
-      put more things here
-    </div>
-  </div>
-</div>
-<br/>
-<br/>
-<br/>
-<div class="full">
+          $("#seguranca").click(function(){
+            myFunction("seguranca");
+          });
 
-    <script src="{% static 'carioquinha/js/jquery.js' %}"></script>
-    <script src="{% static 'carioquinha/bootstrap/js/bootstrap.js' %}"></script>
-    <script type="text/javascript">
-
-$(document).ready(function() {
-    $("#transito").click(function(){
-      myFunction("transito");
-    });
-
-    $("#clima").click(function(){
-      myFunction("clima");
-    });
-
-    $("#seguranca").click(function(){
-      myFunction("seguranca");
-    });
-
-    $("#other").click(function(){
-      myFunction("other");
-    });
-  });
+          $("#other").click(function(){
+            myFunction("other");
+          });
+        });
 
       
         var x = document.getElementById("demo");
@@ -340,6 +392,5 @@ $(document).ready(function() {
 
 
     </script>
-</div>
 </body>
 </html>

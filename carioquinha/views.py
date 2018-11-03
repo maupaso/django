@@ -60,7 +60,6 @@ def getEventosTwittes():
 def index(request):
 	    template = loader.get_template('carioquinha/index.html')
 	    context = {
-	    	'ola': "OI",
 			'violenciaTwitter' :  getViolenciaTwittes(),
 			'transitoTwitter' : getTransitoTwittes(),
 			'eventoTwitter' : getEventosTwittes()
