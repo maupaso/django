@@ -8,48 +8,274 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+
+  <link rel="icon" href="{%static 'carioquinha/images/favicon.ico' %}">
+  <!--<link rel="icon" href="../../../images/favicon.ico">-->
+  <style type="text/css">
+    .div.half {
+        width: 50%;
+    }
+    .div.full {
+      width: 100%;
+    }
+  </style>
+
+
   <title>Carioquinhas</title>
-  <link href="{% static 'carioquinha/bootstrap/css/bootstrap.css' %}" rel="stylesheet">
+
+ <link href="{% static 'carioquinha/bootstrap/css/bootstrap.css' %}" rel="stylesheet">
 </head>
+
 <body onLoad="getLocation()">
 
 
+<div>
 
-<div class="day">
-    <p class="icon">["text_icon"]["icon"]["day"]</p>
-    <p class="text">["text_icon"]["text"]["phrase"]["reduced"]</p>
-    <p class="temperature">["temperature"]["max"] / ["temperature"]["min"]</p>
+  <nav class="navbar navbar-dark bg-dark">
+  <!-- Navbar content -->
+  <a class="navbar-brand" href="#">
+    <img max height="60 px" src="../static/carioquinha/images/LOGO-CARIOQUINHAS-WHITE.png"/></a>
+</nav>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <!--<a class="navbar-brand" href="#">Home</a>-->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Quem somos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
 </div>
 
-<div class="morning">
-    <p class="icon">["text_icon"]["icon"]["morning"]</p>
-    <p class="text">["text_icon"]["text"]["phrase"]["morning"]</p>
-    <p class="temperature">["temperature"]["morning"]["max"] / ["temperature"]["min"]</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-5">
+      <div class="row">
+        <div class="col-6 " id="transito">
+          <div class="row justify-content-md-center">
+            <div class="col-8">
+              <p class="rounded-circle bg-info text-white vcenter button btn" style="height: 100px; width: 100px;">trânsito</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-6" id="clima">
+          <div class="row justify-content-md-center">
+            <div class="col-8">
+              <p class="rounded-circle bg-info text-white vcenter  button btn"  style="height: 100px; width: 100px;">clima</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 " id="seguranca">
+          <div class="row justify-content-md-center">
+            <div class="col-8">
+              <p class="rounded-circle bg-info text-white vcenter button btn"  style="height: 100px; width: 100px;">seguranca</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 " id="noticia">
+          <div class="row justify-content-md-center">
+            <div class="col-8">
+              <p class="rounded-circle bg-info text-white vcenter button btn" style="height: 100px; width: 100px;">noticia</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="content" class="col-7 weather" style="overflow-y: scroll; height:500px;">
+
+      <!-- Transito INFO -->
+      <div class="row group" id="traffic" style="display: none">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Notícia</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">0</th>
+              <td class="textToRead">Hello World</td>
+            </tr>
+            {% for news in transitoTwitter %}
+              <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td class="textToRead">{{news}}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Violencia INFO -->
+      <div class="row group"  id="violence" style="display: none">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Notícia</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">0</th>
+              <td class="textToRead">Hello World</td>
+            </tr>
+            {% for news in violenciaTwitter %}
+              <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td class="textToRead">{{news}}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Notícias INFO -->
+      <div class="row group" id="news" style="display: none">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Notícia</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">0</th>
+              <td class="textToRead">Hello World</td>
+            </tr>
+            {% for news in eventoTwitter %}
+              <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td class="textToRead">{{news}}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Clima INFO -->
+      <div id="weather" class="row group" style="display: none">
+        <div class="day">
+            <p class="icon">["text_icon"]["icon"]["day"]</p>
+            <p class="text">["text_icon"]["text"]["phrase"]["reduced"]</p>
+            <p class="temperature">["temperature"]["max"] / ["temperature"]["min"]</p>
+        </div>
+
+        <div class="morning">
+            <p class="icon">["text_icon"]["icon"]["morning"]</p>
+            <p class="text">["text_icon"]["text"]["phrase"]["morning"]</p>
+            <p class="temperature">["temperature"]["morning"]["max"] / ["temperature"]["min"]</p>
+        </div>
+
+        <div class="afternoon">
+            <p class="icon">["text_icon"]["icon"]["afternoon"]</p>
+            <p class="text">["text_icon"]["text"]["phrase"]["afternoon"]</p>
+            <p class="temperature">["temperature"]["morning"]["max"] / ["afternoon"]["min"]</p>
+        </div>
+
+        <div class="night">
+            <p class="icon">["text_icon"]["icon"]["night"]</p>
+            <p class="text">["text_icon"]["text"]["phrase"]["night"]</p>
+            <p class="temperature">["temperature"]["night"]["max"] / ["temperature"]["min"]</p>
+        </div>
+      </div>
+
+    </div>
+  </div>      
 </div>
 
-<div class="afternoon">
-    <p class="icon">["text_icon"]["icon"]["afternoon"]</p>
-    <p class="text">["text_icon"]["text"]["phrase"]["afternoon"]</p>
-    <p class="temperature">["temperature"]["morning"]["max"] / ["afternoon"]["min"]</p>
-</div>
-
-<div class="night">
-    <p class="icon">["text_icon"]["icon"]["night"]</p>
-    <p class="text">["text_icon"]["text"]["phrase"]["night"]</p>
-    <p class="temperature">["temperature"]["night"]["max"] / ["temperature"]["min"]</p>
-</div>
-
-
-
-
-
-    <script src="{% static 'carioquinha/bootstrap/js/bootstrap.js' %}"></script>
     <script src="{% static 'carioquinha/js/jquery.js' %}"></script>
-
-
-
-
+    <script src="{% static 'carioquinha/bootstrap/js/bootstrap.js' %}"></script>
     <script type="text/javascript">
+
+      function myFunction(param) {
+        var text = $("#content");
+
+        switch(param){
+          case "transito":
+            $(".group").css("display", "none");
+            $("#traffic").css("display", "block");
+            break;
+          case "clima":
+            $(".group").css("display", "none");
+            $("#weather").css("display", "block");
+            break;
+          case "violence":
+            $(".group").css("display", "none");
+            $("#violence").css("display", "block");
+            break;
+          case "news":
+            $(".group").css("display", "none");
+            $("#news").css("display", "block");
+            break;
+          default:
+            text.innerHTML = "";
+            break;
+        }
+      }
+
+      $(document).ready(function() {
+          $("#transito").click(function(){
+            myFunction("transito");
+          });
+
+          $("#clima").click(function(){
+            myFunction("clima");
+          });
+
+          $("#seguranca").click(function(){
+            myFunction("violence");
+          });
+
+          $("#noticia").click(function(){
+            myFunction("news");
+          });
+
+          $(".textToRead").click(function(){
+            alert(this.valueOf().innerText);
+
+
+            //TEXT TO SPEECH
+            $.ajax({
+              url: "https://stream.watsonplatform.net/text-to-speech/api",
+              type: 'POST',
+              dataType: 'json',
+              contentType: 'application/json',
+              processData: false,
+              Accept: "audio/wav",
+              apikey:"pJRjeQOr033WBJG_5uL1FwFXKpZM0ZX_HgCeqYNh11GR",
+              data: {"text":this.valueOf().innerText},
+              success: function (data) {
+                alert(JSON.stringify(data));
+              },
+              error: function(){
+                alert("Cannot get data");
+              }
+            });
+
+          });
+
+        });
+
       
         var x = document.getElementById("demo");
 
@@ -219,10 +445,9 @@
           //xhttp.open("GET", url, true);
           //xhttp.setRequestHeader("Access-Control-Allow-Origin", "oi");
           //xhttp.send();
-        }
+        }       
 
 
     </script>
-
 </body>
 </html>
