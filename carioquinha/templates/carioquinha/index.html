@@ -51,17 +51,6 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Quem somos</a>
       </li>
-      <!--<li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>-->
       <li class="nav-item">
         <a class="nav-link disabled" href="#">Disabled</a>
       </li>
@@ -74,72 +63,178 @@
 </nav>
 </div>
 
-<div>
-  <div class="half" style="float: left; text-align: left;padding: 10vw; ">
-    
-    <!--Clima: <input type="checkbox" id="myCheck" onclick="myFunction()">-->
-    Clima: <input type="checkbox" id="buttonClima" onclick="myFunction()">
-      
-  </div>
-
-  <div class="half" style="float: right; text-align: left;padding: 10vw; border: 1px">
-
-
-<script type="text/javascript">
-      function myFunction() {
-        // Get the checkbox
-        var checkBox = document.getElementById("buttonClima");
-        // Get the output text
-        var text = document.getElementById("text");
-
-        // If the checkbox is checked, display the output text
-        if (checkBox.checked == true){
-          text.style.display = "block";
-        } else {
-          text.style.display = "none";
-        }
-      }
-</script>
-
-    <div class="weather" id="text" style="display: none" align="left">
-      <div class="day">
-          <p class="icon">["text_icon"]["icon"]["day"]</p>
-          <p class="text">["text_icon"]["text"]["phrase"]["reduced"]</p>
-          <p class="temperature">["temperature"]["max"] / ["temperature"]["min"]</p>
-      </div>
-
-      <div class="morning">
-          <p class="icon">["text_icon"]["icon"]["morning"]</p>
-          <p class="text">["text_icon"]["text"]["phrase"]["morning"]</p>
-          <p class="temperature">["temperature"]["morning"]["max"] / ["temperature"]["min"]</p>
-      </div>
-
-      <div class="afternoon">
-          <p class="icon">["text_icon"]["icon"]["afternoon"]</p>
-          <p class="text">["text_icon"]["text"]["phrase"]["afternoon"]</p>
-          <p class="temperature">["temperature"]["morning"]["max"] / ["afternoon"]["min"]</p>
-      </div>
-
-      <div class="night">
-          <p class="icon">["text_icon"]["icon"]["night"]</p>
-          <p class="text">["text_icon"]["text"]["phrase"]["night"]</p>
-          <p class="temperature">["temperature"]["night"]["max"] / ["temperature"]["min"]</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-4">
+      <div class="row">
+        <div class="col-6 " id="transito">
+          <div class="row justify-content-md-center">
+            <div class="col-8">
+              <p class="rounded-circle bg-info text-white vcenter button btn" style="height: 100px; width: 100px;">trânsito</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-6" id="clima">
+          <div class="row justify-content-md-center">
+            <div class="col-8">
+              <p class="rounded-circle bg-info text-white vcenter  button btn"  style="height: 100px; width: 100px;">clima</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 " id="seguranca">
+          <div class="row justify-content-md-center">
+            <div class="col-8">
+              <p class="rounded-circle bg-info text-white vcenter button btn"  style="height: 100px; width: 100px;">seguranca</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 " id="other">
+          <div class="row justify-content-md-center">
+            <div class="col-8">
+              <p class="rounded-circle bg-info text-white vcenter button btn" style="height: 100px; width: 100px;">transito</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="span">
-      put more things here
+    <div id="content" class="col-8 weather">
+
+      <!-- Transito INFO -->
+      <div class="row group" id="traffic" style="display: none">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Notícia</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for news in transitoTwitter %}
+              <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{news}}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Violencia INFO -->
+      <div class="row group"  id="violence" style="display: none">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Notícia</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for news in violenciaTwitter %}
+              <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{news}}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Notícias INFO -->
+      <div class="row group" id="news" style="display: none">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Notícia</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for news in eventoTwitter %}
+              <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{news}}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Clima INFO -->
+      <div id="weather" class="row group" style="display: none">
+        <div class="day">
+            <p class="icon">["text_icon"]["icon"]["day"]</p>
+            <p class="text">["text_icon"]["text"]["phrase"]["reduced"]</p>
+            <p class="temperature">["temperature"]["max"] / ["temperature"]["min"]</p>
+        </div>
+
+        <div class="morning">
+            <p class="icon">["text_icon"]["icon"]["morning"]</p>
+            <p class="text">["text_icon"]["text"]["phrase"]["morning"]</p>
+            <p class="temperature">["temperature"]["morning"]["max"] / ["temperature"]["min"]</p>
+        </div>
+
+        <div class="afternoon">
+            <p class="icon">["text_icon"]["icon"]["afternoon"]</p>
+            <p class="text">["text_icon"]["text"]["phrase"]["afternoon"]</p>
+            <p class="temperature">["temperature"]["morning"]["max"] / ["afternoon"]["min"]</p>
+        </div>
+
+        <div class="night">
+            <p class="icon">["text_icon"]["icon"]["night"]</p>
+            <p class="text">["text_icon"]["text"]["phrase"]["night"]</p>
+            <p class="temperature">["temperature"]["night"]["max"] / ["temperature"]["min"]</p>
+        </div>
+      </div>
+
     </div>
-  </div>
+  </div>      
 </div>
-<br/>
-<br/>
-<br/>
-<div class="full">
 
     <script src="{% static 'carioquinha/js/jquery.js' %}"></script>
     <script src="{% static 'carioquinha/bootstrap/js/bootstrap.js' %}"></script>
     <script type="text/javascript">
+
+      function myFunction(param) {
+        var text = $("#content");
+
+        switch(param){
+          case "transito":
+            $(".group").css("display", "none");
+            $("#traffic").css("display", "block");
+            break;
+          case "clima":
+            $(".group").css("display", "none");
+            $("#weather").css("display", "block");
+            break;
+          case "seguranca":
+            $(".group").css("display", "none");
+            $("#violence").css("display", "block");
+            break;
+          default:
+            text.innerHTML = "";
+            break;
+        }
+      }
+
+      $(document).ready(function() {
+          $("#transito").click(function(){
+            myFunction("transito");
+          });
+
+          $("#clima").click(function(){
+            myFunction("clima");
+          });
+
+          $("#seguranca").click(function(){
+            myFunction("seguranca");
+          });
+
+          $("#other").click(function(){
+            myFunction("other");
+          });
+        });
+
       
         var x = document.getElementById("demo");
 
@@ -313,6 +408,5 @@
 
 
     </script>
-</div>
 </body>
 </html>
