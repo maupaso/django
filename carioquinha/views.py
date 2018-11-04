@@ -64,7 +64,7 @@ def getEventosTwittes():
 		col = list(filter(lambda t: len(t) > 120, twitterRequest('@Cultura_Rio').split("\n")))
 	except Exception as e:
 		return None
-		
+
 	return col
 
 
