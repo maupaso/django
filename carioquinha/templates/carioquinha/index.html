@@ -10,7 +10,7 @@
   <meta name="author" content="">
 
   <link rel="icon" href="{%static 'carioquinha/images/favicon.ico' %}">
-  <!--<link rel="icon" href="../../../images/favicon.ico">-->
+
   <style type="text/css">
     .div.half {
         width: 50%;
@@ -176,25 +176,25 @@
       <div id="weather" class="row group" style="display: none">
         <p class="route">
         <div class="day">
-            <p class="icon">["text_icon"]["icon"]["day"]</p>
+            <img src="" class="icon"/>
             <p class="text">["text_icon"]["text"]["phrase"]["reduced"]</p>
             <p class="temperature">["temperature"]["max"] / ["temperature"]["min"]</p>
         </div>
 
         <div class="morning">
-            <p class="icon">["text_icon"]["icon"]["morning"]</p>
+            <img src="" class="icon"/>
             <p class="text">["text_icon"]["text"]["phrase"]["morning"]</p>
             <p class="temperature">["temperature"]["morning"]["max"] / ["temperature"]["min"]</p>
         </div>
 
         <div class="afternoon">
-            <p class="icon">["text_icon"]["icon"]["afternoon"]</p>
+            <img src="" class="icon"/>
             <p class="text">["text_icon"]["text"]["phrase"]["afternoon"]</p>
             <p class="temperature">["temperature"]["morning"]["max"] / ["afternoon"]["min"]</p>
         </div>
 
         <div class="night">
-            <p class="icon">["text_icon"]["icon"]["night"]</p>
+            <img src="" class="icon"/>
             <p class="text">["text_icon"]["text"]["phrase"]["night"]</p>
             <p class="temperature">["temperature"]["night"]["max"] / ["temperature"]["min"]</p>
         </div>
@@ -405,20 +405,20 @@
                     var textIcon = json["data"][i]["text_icon"];
                     var temperature = json["data"][i]["temperature"];
 
-                    $(".day > .icon").html(textIcon["icon"]["day"]);
+                    $(".day > .icon").attr('src', ("{%static 'carioquinha/images/weather/' %}" + textIcon["icon"]["day"] + ".png"));
                     $(".day > .text").html(textIcon["text"]["phrase"]["reduced"]);
                     $(".day > .temperature").html(temperature["max"] + "/" + temperature["min"]);
 
-                    $(".morning > .icon").html(textIcon["icon"]["day"]);
-                    $(".morning > .text").html(textIcon["text"]["phrase"]["reduced"]);
+                    $(".morning > .icon").attr('src', ("{%static 'carioquinha/images/weather/' %}" + textIcon["icon"]["morning"] + ".png"));
+                    $(".morning > .text").html(textIcon["text"]["phrase"]["morning"]);
                     $(".morning > .temperature").html(temperature["morning"]["max"] + "/" + temperature["morning"]["min"]);
 
-                    $(".afternoon > .icon").html(textIcon["icon"]["day"]);
-                    $(".afternoon > .text").html(textIcon["text"]["phrase"]["reduced"]);
+                    $(".afternoon > .icon").attr('src', ("{%static 'carioquinha/images/weather/' %}" + textIcon["icon"]["afternoon"] + ".png"));
+                    $(".afternoon > .text").html(textIcon["text"]["phrase"]["afternoon"]);
                     $(".afternoon > .temperature").html(temperature["afternoon"]["max"] + "/" + temperature["afternoon"]["min"]);
 
-                    $(".night > .icon").html(textIcon["icon"]["day"]);
-                    $(".night > .text").html(textIcon["text"]["phrase"]["reduced"]);
+                    $(".night > .icon").attr('src', ("{%static 'carioquinha/images/weather/' %}" + textIcon["icon"]["night"] + ".png"));
+                    $(".night > .text").html(textIcon["text"]["phrase"]["night"]);
                     $(".night > .temperature").html(temperature["night"]["max"] + "/" + temperature["night"]["min"]);
                 }     
             }
