@@ -39,7 +39,7 @@
 
   <nav class="navbar navbar-dark bg-dark">
   <!-- Navbar content -->
-  <a class="navbar-brand" href="#">
+  <a class="navbar-brand" href="/carioquinha">
     <img max height="60 px" src="../static/carioquinha/images/LOGO-CARIOQUINHAS-WHITE.png"/></a>
 </nav>
 
@@ -78,7 +78,7 @@
         <div class="col-6" id="clima">
           <div class="row justify-content-md-center">
             <div class="col-8 p-3 m-3">
-              <p class="rounded-circle bg-dark text-white vcenter  button btn"  style="height: 100px; width: 100px;"><img width="75px" src="{%static 'carioquinha/images/weather_ic_blue.png'%}"</p>
+              <p class="rounded-circle bg-dark text-white vcenter  button btn"  style="height: 100px; width: 100px;"><img width="75px" src="{%static 'carioquinha/images/weather_ic_blue.png'%}"></p>
             </div>
           </div>
         </div>
@@ -438,19 +438,19 @@
                       $(".day > .date").html(date);
                       $(".day > .icon").attr('src', ("{%static 'carioquinha/images/weather/' %}" + textIcon["icon"]["day"] + ".png"));
                       $(".day > .text").html(textIcon["text"]["phrase"]["reduced"]);
-                      $(".day > .temperature").html(temperature["max"] + "/" + temperature["min"]);
+                      $(".day > .temperature").html(temperature["max"]+"&deg;" + "/" + temperature["min"]+"&deg;");
 
                       $(".morning > .icon").attr('src', ("{%static 'carioquinha/images/weather/' %}" + textIcon["icon"]["morning"] + ".png"));
                       $(".morning > .text").html(textIcon["text"]["phrase"]["morning"]);
-                      $(".morning > .temperature").html(temperature["morning"]["max"] + "/" + temperature["morning"]["min"]);
+                      $(".morning > .temperature").html(temperature["morning"]["max"] +"&deg;"+ "/" + temperature["morning"]["min"]+"&deg;");
 
                       $(".afternoon > .icon").attr('src', ("{%static 'carioquinha/images/weather/' %}" + textIcon["icon"]["afternoon"] + ".png"));
                       $(".afternoon > .text").html(textIcon["text"]["phrase"]["afternoon"]);
-                      $(".afternoon > .temperature").html(temperature["afternoon"]["max"] + "/" + temperature["afternoon"]["min"]);
+                      $(".afternoon > .temperature").html(temperature["afternoon"]["max"]+"&deg;" + "/" + temperature["afternoon"]["min"]+"&deg;");
 
                       $(".night > .icon").attr('src', ("{%static 'carioquinha/images/weather/' %}" + textIcon["icon"]["night"] + ".png"));
                       $(".night > .text").html(textIcon["text"]["phrase"]["night"]);
-                      $(".night > .temperature").html(temperature["night"]["max"] + "/" + temperature["night"]["min"]);
+                      $(".night > .temperature").html(temperature["night"]["max"] +"&deg;"+ "/" + temperature["night"]["min"]+"&deg;");
                     } else{
                       $("#carousel").append("<div id='addNewDay' class='carousel-item'><div class='day container'><h3 class='date'></h3><img src='' class='icon'/><p class='temperature'></p><p class='text'></p></div><div class='row'><div class='morning col-4'><img src='' class='icon'/><p class='temperature'></p><p class='text'></p></div><div class='afternoon col-4'><img src='' class='icon'/><p class='temperature'></p><p class='text'></p></div><div class='night col-4'><img src='' class='icon'/><p class='temperature'></p><p class='text'></p></div></div></div>");
 
@@ -458,19 +458,19 @@
                       $("#carousel > div > .day > .date").last().html(date);
                       $("#carousel > div > .day > .icon").last().attr('src', ("{%static 'carioquinha/images/weather/'%}" + textIcon["icon"]["day"] + ".png"));
                       $("#carousel > div > .day > .text").last().html(textIcon["text"]["phrase"]["reduced"]);
-                      $("#carousel > div > .day > .temperature").last().html(temperature["max"] + "/" + temperature["min"]);
+                      $("#carousel > div > .day > .temperature").last().html(temperature["max"]+"&deg;" + "/" + temperature["min"]+"&deg;");
 
                       $("#carousel > div > .row > .morning > .icon").last().attr('src', ("{%static 'carioquinha/images/weather/'%}"+textIcon["icon"]["morning"]+".png"));
                       $("#carousel > div > .row > .morning > .text").last().html(textIcon["text"]["phrase"]["morning"]);
-                      $("#carousel > div > .row > .morning > .temperature").last().html(temperature["morning"]["max"]+"/"+temperature["morning"]["min"]);
+                      $("#carousel > div > .row > .morning > .temperature").last().html(temperature["morning"]["max"]+"&deg;"+"/"+temperature["morning"]["min"]+"&deg;");
 
                       $("#carousel > div > .row > .afternoon > .icon").last().attr('src',("{%static 'carioquinha/images/weather/'%}"+textIcon["icon"]["afternoon"]+".png"));
                       $("#carousel > div > .row > .afternoon > .text").last().html(textIcon["text"]["phrase"]["afternoon"]);
-                      $("#carousel > div > .row > .afternoon > .temperature").last().html(temperature["afternoon"]["max"] + "/" + temperature["afternoon"]["min"]);
+                      $("#carousel > div > .row > .afternoon > .temperature").last().html(temperature["afternoon"]["max"] +"&deg;"+ "/" + temperature["afternoon"]["min"]+"&deg;");
 
                       $("#carousel > div > .row > .night > .icon").last().attr('src', ("{%static 'carioquinha/images/weather/' %}"+textIcon["icon"]["night"] + ".png"));
                       $("#carousel > div > .row > .night > .text").last().html(textIcon["text"]["phrase"]["night"]);
-                      $("#carousel > div > .row > .night > .temperature").last().html(temperature["night"]["max"]+"/"+temperature["night"]["min"]);
+                      $("#carousel > div > .row > .night > .temperature").last().html(temperature["night"]["max"]+"&deg;"+"/"+temperature["night"]["min"]+"&deg;");
                     }
 
 
