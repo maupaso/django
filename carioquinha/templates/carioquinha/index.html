@@ -43,6 +43,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
+  <!-- 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
@@ -51,21 +52,15 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Quem somos</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
   </div>
+  -->
 </nav>
 </div>
 
-<div class="container-fluid">
+<div class="container-fluid pt-5">
   <div class="row">
-    <div class="col-5">
+    <div class="col-5 border-right">
       <div class="row">
         <div class="col-6 " id="transito">
           <div class="row justify-content-md-center">
@@ -98,10 +93,10 @@
       </div>
     </div>
 
-    <div id="content" class="col-7 weather" style="overflow-y: scroll; height:500px;">
+    <div id="content" class="col-7 weather container" style="overflow-y: scroll; height:500px;">
 
       <!-- Transito INFO -->
-      <div class="row group" id="traffic" style="display: none">
+      <div class="row group p-3 m-3" id="traffic" style="display: none">
         <table class="table table-striped">
           <thead>
             <tr>
@@ -125,7 +120,7 @@
       </div>
 
       <!-- Violencia INFO -->
-      <div class="row group"  id="violence" style="display: none">
+      <div class="row group p-3 m-3"  id="violence" style="display: none">
         <table class="table table-striped">
           <thead>
             <tr>
@@ -149,7 +144,7 @@
       </div>
 
       <!-- Notícias INFO -->
-      <div class="row group" id="news" style="display: none">
+      <div class="row group p-3 m-3" id="news" style="display: none">
         <table class="table table-striped">
           <thead>
             <tr>
@@ -173,7 +168,7 @@
       </div>
 
       <!-- Clima INFO -->
-      <div id="weather" class="row group" style="display: none">
+      <div id="weather" class="row group p-3 m-3" style="display: none">
         <p class="route">
         <div class="day container">
             <img src="" class="icon"/>
