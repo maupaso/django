@@ -175,28 +175,30 @@
       <!-- Clima INFO -->
       <div id="weather" class="row group" style="display: none">
         <p class="route">
-        <div class="day">
+        <div class="day container">
             <img src="" class="icon"/>
-            <p class="text">["text_icon"]["text"]["phrase"]["reduced"]</p>
             <p class="temperature">["temperature"]["max"] / ["temperature"]["min"]</p>
+            <p class="text">["text_icon"]["text"]["phrase"]["reduced"]</p>
         </div>
 
-        <div class="morning">
-            <img src="" class="icon"/>
-            <p class="text">["text_icon"]["text"]["phrase"]["morning"]</p>
-            <p class="temperature">["temperature"]["morning"]["max"] / ["temperature"]["min"]</p>
-        </div>
+        <div class="row">
+          <div class="morning col-4">
+              <img src="" class="icon"/>
+              <p class="temperature">["temperature"]["morning"]["max"] / ["temperature"]["min"]</p>
+              <p class="text">["text_icon"]["text"]["phrase"]["morning"]</p>
+          </div>
 
-        <div class="afternoon">
-            <img src="" class="icon"/>
-            <p class="text">["text_icon"]["text"]["phrase"]["afternoon"]</p>
-            <p class="temperature">["temperature"]["morning"]["max"] / ["afternoon"]["min"]</p>
-        </div>
+          <div class="afternoon col-4">
+              <img src="" class="icon"/>
+              <p class="temperature">["temperature"]["morning"]["max"] / ["afternoon"]["min"]</p>
+              <p class="text">["text_icon"]["text"]["phrase"]["afternoon"]</p>
+          </div>
 
-        <div class="night">
-            <img src="" class="icon"/>
-            <p class="text">["text_icon"]["text"]["phrase"]["night"]</p>
-            <p class="temperature">["temperature"]["night"]["max"] / ["temperature"]["min"]</p>
+          <div class="night col-4">
+              <img src="" class="icon"/>
+              <p class="temperature">["temperature"]["night"]["max"] / ["temperature"]["min"]</p>
+              <p class="text">["text_icon"]["text"]["phrase"]["night"]</p>
+          </div>
         </div>
       </div>
 
