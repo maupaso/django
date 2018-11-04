@@ -175,6 +175,7 @@
 
         <div id="addNewDay" class="carousel-item active">
           <div class="day container">
+            <h3 class="date"></h3>
             <img src="" class="icon"/>
             <p class="temperature"></p>
             <p class="text"></p>
@@ -428,6 +429,7 @@
                     var temperature = json["data"][i]["temperature"];
 
                     if(i == 0){
+                      $(".day > .date").html(date);
                       $(".day > .icon").attr('src', ("{%static 'carioquinha/images/weather/' %}" + textIcon["icon"]["day"] + ".png"));
                       $(".day > .text").html(textIcon["text"]["phrase"]["reduced"]);
                       $(".day > .temperature").html(temperature["max"] + "/" + temperature["min"]);
@@ -444,9 +446,10 @@
                       $(".night > .text").html(textIcon["text"]["phrase"]["night"]);
                       $(".night > .temperature").html(temperature["night"]["max"] + "/" + temperature["night"]["min"]);
                     } else{
-                      $("#carousel").append("<div id='addNewDay' class='carousel-item'><div class='day container'><img src='' class='icon'/><p class='temperature'></p><p class='text'></p></div><div class='row'><div class='morning col-4'><img src='' class='icon'/><p class='temperature'></p><p class='text'></p></div><div class='afternoon col-4'><img src='' class='icon'/><p class='temperature'></p><p class='text'></p></div><div class='night col-4'><img src='' class='icon'/><p class='temperature'></p><p class='text'></p></div></div></div>");
+                      $("#carousel").append("<div id='addNewDay' class='carousel-item'><div class='day container'><h3 class='date'></h3><img src='' class='icon'/><p class='temperature'></p><p class='text'></p></div><div class='row'><div class='morning col-4'><img src='' class='icon'/><p class='temperature'></p><p class='text'></p></div><div class='afternoon col-4'><img src='' class='icon'/><p class='temperature'></p><p class='text'></p></div><div class='night col-4'><img src='' class='icon'/><p class='temperature'></p><p class='text'></p></div></div></div>");
 
 
+                      $("#carousel > div > .day > .date").last().html(date);
                       $("#carousel > div > .day > .icon").last().attr('src', ("{%static 'carioquinha/images/weather/'%}" + textIcon["icon"]["day"] + ".png"));
                       $("#carousel > div > .day > .text").last().html(textIcon["text"]["phrase"]["reduced"]);
                       $("#carousel > div > .day > .temperature").last().html(temperature["max"] + "/" + temperature["min"]);
